@@ -1,0 +1,62 @@
+<%- include('navbar.ejs') %>
+<form action="save_slider" enctype="multipart/form-data" method="post">
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center mt-4 text-warning">Manage Slider</h2>
+            <div class="col-md-6 mt-3">
+                Enter Slider Image : <input type="file" name="slider_image" class="form-control" accept="image/*">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Title : <input type="text" name="slider_title" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Button Text : <input type="text" name="button_text" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Button Link : <input type="text" name="button_link" class="form-control">
+            </div>
+            <div class="col-md-12 text-center mt-5">
+                <button class="btn btn-primary">Save Slider</button>
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+<hr>
+<div class="mt-5 container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th></th>
+                    <th>SN no</th>
+                    <th>Slider Image</th>
+                    <th>Slider Time</th>
+                    <th>Slider Button Text</th>
+                    <th>Slider Button Link</th>
+                </tr>
+                <% for(var i=0;i<slides.length;i++) {%>
+                    <tr>
+                        <td style="white-space:nowrap" class="pt-3" width="5%">
+                            <a href="/admin/slider_edit/<%= slides[i].slider_id%>">
+                                <button class="fa fa-edit btn btn-primary"></button>
+                            </a>
+                            <a href="/admin/slider_delete/<%= slides[i].slider_id%>">
+                                <button class="fa fa-trash btn btn-danger"></button>
+                            </a>
+                        </td>
+                        <td><%= i+1%></td>
+                        <td width="150px">
+                            <img src="/uploads/<%= slides[i].slider_image%>" width="150px">
+                        </td>
+                        <td><%= slides[i].slider_title%></td>
+                        <td><%= slides[i].slider_button_text%></td>
+                        <td><%= slides[i].slider_button_link%></td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('footer.ejs')%>

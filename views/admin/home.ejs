@@ -1,0 +1,45 @@
+<%- include('navbar.ejs') %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+<canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
+<script>
+var xValues = ["jan", "feb", "Mar", "Apr", "May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var yValues = ["<%=jan%>", "<%=feb%>", "<%=mar%>", "<%=apr%>", "<%=may%>","<%=jun%>","<%=jul%>","<%=aug%>","<%=sep%>","<%=oct%>","<%=nov%>","<%=dec%>"];
+var barColors = [
+  "brown",
+  "gold",
+  "aqua",
+  "coral",
+  "navy blue",
+  "blue",
+  "purple",
+  "maroon",
+  "yellow",
+  "cyan",
+  "Orange",
+  "black",
+];
+
+new Chart("myChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Monthly Courses sold"
+    }
+  }
+});
+</script>
+        </div>
+    </div>
+</div>
+<%- include('footer.ejs')%>

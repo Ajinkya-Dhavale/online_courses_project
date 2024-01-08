@@ -1,0 +1,49 @@
+<%- include('navbar.ejs')%>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-4">
+            <h2 class="text-danger text-center">Sold Courses</h2>
+        </div>
+        <form method="post" action="/admin/search_course" class="form">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3 mr-0 pr-0">
+                        <select name="course_search_id" class="form-control" required>
+                            <option selected disabled value="">Select Course</option>
+                            <% for(var i=0;i<list1.length;i++) { %>
+                            <option value="<%= list1[i].course_name%>"><%= list1[i].course_name%>
+                            </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="col-md-6 ml-0 pl-0">
+                        <button class="btn btn-outline-dark">Search</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-12 mt-4">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Sr.no</th>
+                    <th>User</th>
+                    <th>Course</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Transaction Id</th>
+                </tr>
+                <% for(var i=0;i<list.length;i++) {%>
+                <tr>
+                    <td><%= i+1%></td>
+                    <td><%= list[i].user_name%></td>
+                    <td><%= list[i].course_name%></td>
+                    <td><%= list[i].purchase_date%></td>
+                    <td class="font-weight-bold">&#8377;<%= list[i].amount%>.00</td>
+                    <td><%= list[i].transaction_id%></td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include('footer.ejs')%>

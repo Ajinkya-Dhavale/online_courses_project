@@ -1,0 +1,45 @@
+<%- include('navbar.ejs') %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mt-3 text-primary">Couses List</h2>
+        </div>
+        <div class="col-md-12 table-responsive">
+             <table class="table table-bordered">
+                <tr>
+                    <th></th>
+                    <th>Sr.no</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Duration</th>
+                    <th>Mentor</th>
+                    <th>Platform</th>
+                    <th>Price</th>
+                </tr>
+                <% for(var i=0;i<course_list.length;i++){ %>
+                <tr>
+                    <td style="white-space:nowrap" class="pt-3" width="5%">
+                        <a href="/admin/course_detail/<%= course_list[i].course_id%>">
+                            <button class="btn-sm btn-success"><i class="fa fa-print"></i> Details</button>
+                        </a>
+                        <a href="/admin/course_edit/<%= course_list[i].course_id%>">
+                            <button class="fa fa-edit btn btn-primary"></button>
+                        </a>
+                        <a href="/admin/course_delete/<%= course_list[i].course_id%>">
+                            <button class="fa fa-trash btn btn-danger"></button>
+                        </a>
+                    </td>
+                    <td><%= i+1%></td>
+                    <td><%= course_list[i].course_name%></td>
+                    <td><%= course_list[i].category_name%></td>
+                    <td><%= course_list[i].course_duration%></td>
+                    <td><%= course_list[i].course_mentor%></td>
+                    <td><%= course_list[i].course_platform%></td>
+                    <td><b> &#8377; <%= course_list[i].course_price%>.00</b></td>
+                </tr>
+                <% } %>
+             </table>
+        </div>
+    </div>
+</div>
+<%- include('footer.ejs')%>

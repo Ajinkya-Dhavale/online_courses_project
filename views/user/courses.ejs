@@ -1,0 +1,31 @@
+<%- include('navbar.ejs')%>
+
+<div class="container mt-5 mb-5">
+    <div class="row  d-flex justify-content-center  align-item-center">
+        <div class="col-md-12 text-center"> 
+            <h3 class="alert alert-primary"> All Courses </h3>
+        </div>
+        <% for(var i=0;i<courses.length;i++) { %>
+        <div class="col-md-4 mt-3">
+            <div class="card">
+                <div class="card-header p-0">
+                    <img src="/uploads/<%=courses[i].course_image%>" class="w-100" style="height:200px">
+                </div>
+                <div class="card-body pb-0">
+                    <h3 class="card-title text-dark"><%= courses[i].course_name %></h3>
+                    <h6 class="text-dark ml-5">-By <%= courses[i].course_mentor %></h6>
+                </div>
+                <div class="card-footer bg-dark">
+                    <h4 class="font-weight-bold text-white">&#8377; <%= courses[i].course_price%>.00
+                        <a href="/course_details/<%=courses[i].course_id%>">
+                            <button class="btn btn-outline-light float-right">View Details</button>
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('footer.ejs')%>

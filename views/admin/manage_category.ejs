@@ -1,0 +1,55 @@
+<%- include('navbar.ejs') %>
+<form action="save_category" method="post">
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center mt-4 text-warning">Manage Category</h2>
+            <div class="col-md-6 mt-3">
+                Enter Category Name : <input type="text" name="category_name" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                Enter Category Description : <textarea name="category_description" class="form-control"></textarea>
+            </div>
+            <div class="col-md-12 text-center mt-5">
+                <button class="btn btn-primary">Save Category</button>
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+<hr>
+<div class="mt-5 container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th></th>
+                    <th>SN no</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                <% for(var i=0;i<cats.length;i++) {%>
+                <tr>
+                    <td style="white-space:nowrap" class="pt-3" width="5%">
+                        <a href="/admin/category_edit/<%= cats[i].category_id%>">
+                            <button class="fa fa-edit btn btn-primary"></button>
+                        </a>
+                        <a href="/admin/category_delete/<%= cats[i].category_id%>">
+                            <button class="fa fa-trash btn btn-danger"></button>
+                        </a>
+                    </td>
+                    <td><%= i+1%></td>
+                    <td><%= cats[i].category_name%></td>
+                    <td width="70%">
+                        <div style="white-space: nowrap;text-overflow:ellipsis;overflow:hidden;width:700px">
+                            <%= cats[i].category_description%>
+                        </div>
+                    </td>
+                </tr>
+                <% } %>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('footer.ejs') %>

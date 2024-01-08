@@ -1,0 +1,50 @@
+<%- include('navbar.ejs')%>
+<div class="container mt-4 mb-5 ">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="alert alert-danger">Confirm Your Seat,</h3>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5 shadow-lg p-4 rounded mt-4">
+            <h2 class="text-center"><%= course_det[0].course_name %></h2>
+            <h5 class="text-center"><%= course_det[0].course_mentor %></h5>
+            <h3 class="text-center font-weight-bold">&#8377;<%= course_det[0].course_price %>/-</h3>
+            <div class="text-center mt-4 mb-2">
+                <button class="btn btn-primary rounded-pill" id="rzp-button1">Pay & Confirm seat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_AWbCxX14mGjWaN", // Enter the Key ID generated from the Dashboard
+    "amount": "<%= course_det[0].course_price*100%>", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "All In One Courses", //your business name
+    "description": "<%= course_det[0].course_name %>",
+    "image": "/assets/logo1-removebg-preview.png",
+    // "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1 -->
+    "callback_url": "http://localhost:1000/pay_course_fee/<%=course_det[0].course_id%>",
+    "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+        "name": "<%= user_det[0].user_name%>", //your customer's name
+        "email": "<%= user_det[0].user_email%>",
+        "contact": "<%= user_det[0].user_mobile%>" //Provide the customer's phone number for better conversion rates 
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+
+<%- include('footer.ejs')%>

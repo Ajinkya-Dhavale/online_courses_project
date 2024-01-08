@@ -1,0 +1,23 @@
+<%- include('navbar.ejs') %>
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12 mt-4">
+            <h2 class="text-center text-primary">Update User</h2>
+        </div>
+        <div class="col-md-4 mt-4">
+            <form method="post" action="/update_edit">
+                <input type='hidden' value="<%= edit_user.user_id%>" class="form-control mb-3 mt-1"  name='user_id'>
+                Enter Name :
+                <input type='text' value="<%= edit_user.user_name%>" class="form-control mb-3 mt-1"  name='user_name'>
+                Enter Mobile :
+                <input type='text' value="<%= edit_user.user_mobile%>" class="form-control mb-3 mt-1" name='user_mobile'>
+                Enter Email :
+                <input type='text' value="<%= edit_user.user_email%>" class="form-control mb-3 mt-1"  name='user_email'>
+                Enter Password :
+                <input type='text' value="<%= edit_user.user_password%>" class="form-control mb-3 mt-1"  name='user_password'>
+                <button class='submit-btn mt-3 bg-warning'>Edit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('footer.ejs')%>

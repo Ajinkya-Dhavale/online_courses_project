@@ -1,0 +1,26 @@
+<%- include('navbar.ejs') %>
+<div class="container p-5">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Sr.no</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Message</th>
+                </tr>
+                <% for(var i=0;i<list.length;i++) { %>
+                    <tr>
+                        <td><%= i+1 %></td>
+                        <td><%= list[i].user_name %></td>
+                        <td><%= list[i].user_email %></td>
+                        <td><%= list[i].user_mobile %></td>
+                        <td><%= list[i].user_message %></td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include('footer.ejs')%>

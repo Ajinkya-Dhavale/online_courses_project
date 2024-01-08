@@ -1,0 +1,67 @@
+<%- include('navbar.ejs')%>
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="font-weight-bold alert alert-primary"><%= details[0].course_name%></h2>
+        </div>
+        <div class="col-md-6">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-md-12 mb-2 pb-2 border-bottom">
+                        Course Name 
+                        <b class="d-block pl-4"><%=details[0].course_name%></b>
+                    </div>
+                    <div class="col-md-12 mb-2 pb-2 border-bottom">
+                        Category
+                        <b class="d-block pl-4"><%=details[0].category_name%></b>
+                    </div>
+                    <div class="col-md-12 mb-2 pb-2 border-bottom">
+                        Duration 
+                        <b class="d-block pl-4"><%=details[0].course_duration%></b>
+                    </div>
+                    <div class="col-md-12 mb-2 pb-2 border-bottom">
+                        Price 
+                        <b class="d-block pl-4">&#8377; <%=details[0].course_price%>.00</b>
+                    </div>
+                    <div class="col-md-12 mb-2 pb-2 border-bottom">
+                        Mentor 
+                        <b class="d-block pl-4"><%=details[0].course_mentor%></b>
+                    </div>
+                    <div class="col-md-12 mb-2 pb-2 border-bottom">
+                        Link 
+                        <b class="d-block pl-4"><%=(details[0].course_link) ? details[0].course_link : '--' %></b>
+                    </div>
+                    <div class="col-md-12 mb-2 pb-2 border-bottom">
+                        Platform 
+                        <b class="d-block pl-4"><%=details[0].course_platform%></b>
+                    </div>
+                    <div class="col-md-12 mb-2 pb-2 border-bottom">
+                        Image 
+                        <a href="" onclick="openPopUp('/uploads/<%= details[0].course_image%>')">
+                        <b class="d-block pl-4">view</b>
+                        </a>
+                    </div>
+                    <% if(details[0].course_sample_video!="") { %>
+                        <div class="col-md-12 mb-2 pb-2 border-bottom">
+                            video 
+                            <a href="" onclick="openPopUp('/uploads/<%= details[0].course_sample_video%>')">
+                            <b class="d-block pl-4">open</b>
+                            </a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 "></div>
+        <div class="col-md-12 ml-3 mb-2">
+            Details 
+            <b class="d-block pl-4"><%- details[0].course_detail.replaceAll("\n","<br>")%></b>
+        </div>
+    </div>
+</div>
+<script>
+    function openPopUp(elmt){
+        window.open(elmt,'','height=300px,width=500px')
+    }
+</script>
+<%- include('footer.ejs')%>
